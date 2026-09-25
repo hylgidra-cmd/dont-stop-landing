@@ -71,8 +71,21 @@ export const uz: TranslationDictionary = {
     slideCountText: "8 Slaydli Taqdimot",
   },
   emblems: {
-    title: "GILDIYA GERBLARI GALEREYASI",
-    subtitle: "Jamoangiz shon-sharafini aks ettiruvchi vektor nishonni tanlang",
+    eyebrow: "GILDIYA GERBLARI",
+    title: "Professional Vektor Gerblar To'plami",
+    subtitle: "Gildiyangiz shon-sharafini aks ettiruvchi 10 ta eksklyuziv gaming emblemalar.",
+    items: {
+      shield: { name: "Qalqon", sub: "Shield" },
+      swords: { name: "Qilichlar", sub: "Swords" },
+      crown: { name: "Toj", sub: "Crown" },
+      zap: { name: "Yashin", sub: "Lightning" },
+      flame: { name: "Olov", sub: "Fire" },
+      trophy: { name: "Kubok", sub: "Trophy" },
+      gem: { name: "Olmos", sub: "Gem" },
+      target: { name: "Nishon", sub: "Target" },
+      castle: { name: "Qasr", sub: "Citadel" },
+      skull: { name: "Boshsuyak", sub: "Skull" },
+    },
   },
   steps: {
     title: "QANDAY ISHLAYDI?",

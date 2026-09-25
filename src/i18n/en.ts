@@ -73,8 +73,21 @@ export const en: TranslationDictionary = {
     slideCountText: "8-Slide Presentation Deck",
   },
   emblems: {
-    title: "GUILD EMBLEMS GALLERY",
-    subtitle: "Choose a vector badge that represents your team's glory",
+    eyebrow: "GUILD EMBLEMS",
+    title: "Professional Vector Badge Collection",
+    subtitle: "10 exclusive gaming emblem badges representing your guild's glory.",
+    items: {
+      shield: { name: "Shield", sub: "Shield" },
+      swords: { name: "Swords", sub: "Swords" },
+      crown: { name: "Crown", sub: "Crown" },
+      zap: { name: "Lightning", sub: "Lightning" },
+      flame: { name: "Fire", sub: "Fire" },
+      trophy: { name: "Trophy", sub: "Trophy" },
+      gem: { name: "Gem", sub: "Gem" },
+      target: { name: "Target", sub: "Target" },
+      castle: { name: "Citadel", sub: "Citadel" },
+      skull: { name: "Skull", sub: "Skull" },
+    },
   },
   steps: {
     title: "HOW IT WORKS",

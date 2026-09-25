@@ -73,8 +73,21 @@ export const ru: TranslationDictionary = {
     slideCountText: "Презентация на 8 слайдов",
   },
   emblems: {
-    title: "ГАЛЕРЕЯ ЭМБЛЕМ GUILD",
-    subtitle: "Создайте уникальный стиль вашей команды",
+    eyebrow: "ЭМБЛЕМЫ ГИЛЬДИЙ",
+    title: "Коллекция Векторных Эмблем",
+    subtitle: "10 эксклюзивных игровых бейджей для стиля вашей гильдии.",
+    items: {
+      shield: { name: "Щит", sub: "Shield" },
+      swords: { name: "Мечи", sub: "Swords" },
+      crown: { name: "Корона", sub: "Crown" },
+      zap: { name: "Молния", sub: "Lightning" },
+      flame: { name: "Огонь", sub: "Fire" },
+      trophy: { name: "Кубок", sub: "Trophy" },
+      gem: { name: "Алмаз", sub: "Gem" },
+      target: { name: "Мишень", sub: "Target" },
+      castle: { name: "Замок", sub: "Citadel" },
+      skull: { name: "Череп", sub: "Skull" },
+    },
   },
   steps: {
     title: "КАК ЭТО РАБОТАЕТ?",

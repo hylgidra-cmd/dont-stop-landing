@@ -364,19 +364,23 @@ export function LandingPage() {
       {/* ── Guild Emblems Showcase Section ──────────────────────────── */}
       <section id="guilds" className="landing-section">
         <div className="section-head">
-          <p className="eyebrow">{dict.nav?.guilds || "GILDIYA GERBLARI"}</p>
+          <p className="eyebrow">{dict.emblems?.eyebrow || "GILDIYA GERBLARI"}</p>
           <h2>{dict.emblems?.title || "Professional Vektor Gerblar To'plami"}</h2>
           <p className="section-lead">{dict.emblems?.subtitle || "Gildiyangiz shon-sharafini aks ettiruvchi 10 ta eksklyuziv gaming emblemalar."}</p>
         </div>
 
         <div className="emblems-showcase-grid">
-          {GUILD_EMBLEMS_LIST.map((emb) => (
-            <div key={emb.id} className="emblem-showcase-card" style={{ borderColor: `${emb.color}44` }}>
-              <GuildEmblem emblemId={emb.id} size={28} />
-              <strong style={{ color: emb.color }}>{emb.name}</strong>
-              <span>{emb.shortName}</span>
-            </div>
-          ))}
+          {GUILD_EMBLEMS_LIST.map((emb) => {
+            const translatedName = dict.emblems?.items?.[emb.id]?.name || emb.name;
+            const translatedSub = dict.emblems?.items?.[emb.id]?.sub || emb.shortName;
+            return (
+              <div key={emb.id} className="emblem-showcase-card" style={{ borderColor: `${emb.color}44` }}>
+                <GuildEmblem emblemId={emb.id} size={28} />
+                <strong style={{ color: emb.color }}>{translatedName}</strong>
+                <span>{translatedSub}</span>
+              </div>
+            );
+          })}
         </div>
       </section>
 
