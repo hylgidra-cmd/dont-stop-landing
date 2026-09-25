@@ -1,13 +1,10 @@
-import { qq } from './qq';
 import { uz } from './uz';
 import { ru } from './ru';
-import { kk } from './kk';
-import { tr } from './tr';
 import { en } from './en';
 import { setActiveDict } from './state';
 import type { TranslationDictionary } from './qq';
 
-export type LanguageCode = 'uz' | 'ru' | 'en' | 'tr' | 'kk' | 'qq';
+export type LanguageCode = 'uz' | 'ru' | 'en';
 
 export interface LanguageOption {
   code: LanguageCode;
@@ -19,18 +16,12 @@ export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   { code: 'uz', name: "O'zbekcha", flag: '🇺🇿' },
   { code: 'ru', name: 'Русский', flag: '🇷🇺' },
   { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-  { code: 'kk', name: 'Qazaqsha', flag: '🇰🇿' },
-  { code: 'qq', name: 'Qaraqalpaqsha', flag: '🚩' },
 ];
 
 const DICTIONARIES: Record<LanguageCode, TranslationDictionary> = {
   uz,
   ru,
   en,
-  tr,
-  kk,
-  qq,
 };
 
 let currentLang: LanguageCode = (() => {
