@@ -19,6 +19,12 @@ export const uz: TranslationDictionary = {
     ctaQr: "Android APK",
     investorDeck: "Taqdimot (PPTX)",
   },
+  heroCard: {
+    guildTitle: "Nukus Runners [NKS]",
+    areaText: "Gildiya Maydoni • 12,450 m²",
+    onlineStatus: "🟢 ONLAYN",
+    bonusText: "2x Maydon Bonusi Faollashtirildi!",
+  },
   stats: {
     claimedAreas: "Egallangan Hududlar",
     activeGuilds: "Faol Gildiyalar",
@@ -53,6 +59,16 @@ export const uz: TranslationDictionary = {
     slide6Title: "3 Yillik O'sish Rejasi",
     slide7Title: "Investitsiyani Ishlatish ($50K)",
     slide8Title: "Texnologik Asos va Stek",
+  },
+  deckStats: {
+    budgetTitle: "$50,000",
+    budgetDesc: "Pre-Seed Byudjet Taqsimoti",
+    growthTitle: "3 Yil",
+    growthDesc: "$4M+ O'sish Bashorati",
+    rolesTitle: "5 Rol",
+    rolesDesc: "Backend, Mobile, Game Dev, Design, Marketing",
+    allDownloads: "Barcha tillarda yuklab olish:",
+    slideCountText: "8 Slaydli Taqdimot",
   },
   emblems: {
     title: "GILDIYA GERBLARI GALEREYASI",

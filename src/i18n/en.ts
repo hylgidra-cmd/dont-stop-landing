@@ -21,6 +21,12 @@ export const en: TranslationDictionary = {
     ctaQr: "Android APK",
     investorDeck: "Presentation (PPTX)",
   },
+  heroCard: {
+    guildTitle: "Nukus Runners [NKS]",
+    areaText: "Guild Territory • 12,450 m²",
+    onlineStatus: "🟢 ONLINE",
+    bonusText: "2x Territory Bonus Active!",
+  },
   stats: {
     claimedAreas: "Captured Areas",
     activeGuilds: "Active Guilds",
@@ -55,6 +61,16 @@ export const en: TranslationDictionary = {
     slide6Title: "3-Year Growth Plan",
     slide7Title: "Use of $50K Investment",
     slide8Title: "Tech Stack",
+  },
+  deckStats: {
+    budgetTitle: "$50,000",
+    budgetDesc: "Pre-Seed Budget Allocation",
+    growthTitle: "3 Years",
+    growthDesc: "$4M+ Growth Forecast",
+    rolesTitle: "5 Roles",
+    rolesDesc: "Backend, Mobile, Game Dev, Design, Marketing",
+    allDownloads: "Download in all languages:",
+    slideCountText: "8-Slide Presentation Deck",
   },
   emblems: {
     title: "GUILD EMBLEMS GALLERY",

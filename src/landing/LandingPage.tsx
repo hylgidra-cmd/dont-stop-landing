@@ -24,14 +24,12 @@ const REDIRECT_MAP_URL = 'https://qalarun-web.onrender.com';
 
 export function LandingPage() {
   const [currentLang, setCurrentLang] = useState<LanguageCode>(getLanguage());
-  const [activeDeckTab, setActiveDeckTab] = useState<'uz' | 'ru' | 'en'>(getLanguage());
 
   const dict: Record<string, any> = (getActiveDict() as any) || {};
 
   const handleLangChange = (code: LanguageCode) => {
     setLanguage(code);
     setCurrentLang(code);
-    setActiveDeckTab(code);
   };
 
   const handleGoToMap = () => {
@@ -71,6 +69,8 @@ export function LandingPage() {
     },
   };
 
+  const activeDeck = deckFiles[currentLang] || deckFiles.uz;
+
   return (
     <div className="landing-shell">
       {/* ── Landing Header ────────────────────────────────────────── */}
@@ -99,21 +99,21 @@ export function LandingPage() {
                 className={`lang-pill-btn ${currentLang === 'uz' ? 'active' : ''}`}
                 onClick={() => handleLangChange('uz')}
               >
-                🇺🇿 UZB
+                uz O'zbekcha (UZB)
               </button>
               <button
                 type="button"
                 className={`lang-pill-btn ${currentLang === 'ru' ? 'active' : ''}`}
                 onClick={() => handleLangChange('ru')}
               >
-                🇷🇺 RUS
+                ru Русский (RUS)
               </button>
               <button
                 type="button"
                 className={`lang-pill-btn ${currentLang === 'en' ? 'active' : ''}`}
                 onClick={() => handleLangChange('en')}
               >
-                🇬🇧 ENG
+                gb English (ENG)
               </button>
             </div>
 
@@ -146,7 +146,7 @@ export function LandingPage() {
             </button>
 
             <a href="#presentation" className="hero-presentation-btn">
-              <FileText size={18} /> <span>{dict.hero?.investorDeck || "Investor Taqdimoti (PPTX)"}</span>
+              <FileText size={18} /> <span>{dict.hero?.investorDeck || "Taqdimot (PPTX)"}</span>
             </a>
           </div>
 
@@ -177,7 +177,7 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Hero Interactive Showcase Card */}
+        {/* Hero Interactive Showcase Card (Translated Dynamically) */}
         <div className="hero-preview-frame">
           <div className="preview-glow" />
           <div className="preview-card">
@@ -185,11 +185,11 @@ export function LandingPage() {
               <div className="preview-user">
                 <div className="preview-avatar">🎮</div>
                 <div>
-                  <strong>Nukus Runners [NKS]</strong>
-                  <span>Gildiya Aymaǵı • 12,450 m²</span>
+                  <strong>{dict.heroCard?.guildTitle || "Nukus Runners [NKS]"}</strong>
+                  <span>{dict.heroCard?.areaText || "Gildiya Maydoni • 12,450 m²"}</span>
                 </div>
               </div>
-              <span className="live-status-badge">🟢 ONLAYN</span>
+              <span className="live-status-badge">{dict.heroCard?.onlineStatus || "🟢 ONLAYN"}</span>
             </div>
 
             <div className="preview-map-sim">
@@ -200,7 +200,7 @@ export function LandingPage() {
               </div>
               <div className="sim-overlay-badge">
                 <Swords size={14} style={{ color: '#FF3B30' }} />
-                <span>2x Maydon Bonusi Belsendi!</span>
+                <span>{dict.heroCard?.bonusText || "2x Maydon Bonusi Faollashtirildi!"}</span>
               </div>
             </div>
           </div>
@@ -258,11 +258,11 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ── INVESTOR PRESENTATION DECK SECTION ─────────────────────── */}
+      {/* ── PRESENTATION DECK SECTION (FULLY DYNAMIC I18N) ─────────────────── */}
       <section id="presentation" className="landing-section dark-alt">
         <div className="section-head">
-          <p className="eyebrow">INVESTOR PITCH DECK</p>
-          <h2>{dict.presentation?.title || "Investorlar uchun Taqdimot (PPTX)"}</h2>
+          <p className="eyebrow">PITCH DECK</p>
+          <h2>{dict.presentation?.title || "Taqdimot (PPTX)"}</h2>
           <p className="section-lead">
             {dict.presentation?.subtitle || "Pre-Seed $50,000 investitsiya rejasi, 3 yillik moliyaviy prognozlar hamda 3 tilda (UZB, RUS, ENG) tayyorlangan slaydlar."}
           </p>
@@ -272,24 +272,24 @@ export function LandingPage() {
         <div className="deck-lang-tabs">
           <button
             type="button"
-            className={`deck-tab-btn ${activeDeckTab === 'uz' ? 'active' : ''}`}
-            onClick={() => setActiveDeckTab('uz')}
+            className={`deck-tab-btn ${currentLang === 'uz' ? 'active' : ''}`}
+            onClick={() => handleLangChange('uz')}
           >
-            🇺🇿 O'zbekcha (UZB)
+            uz O'zbekcha (UZB)
           </button>
           <button
             type="button"
-            className={`deck-tab-btn ${activeDeckTab === 'ru' ? 'active' : ''}`}
-            onClick={() => setActiveDeckTab('ru')}
+            className={`deck-tab-btn ${currentLang === 'ru' ? 'active' : ''}`}
+            onClick={() => handleLangChange('ru')}
           >
-            🇷🇺 Русский (RUS)
+            ru Русский (RUS)
           </button>
           <button
             type="button"
-            className={`deck-tab-btn ${activeDeckTab === 'en' ? 'active' : ''}`}
-            onClick={() => setActiveDeckTab('en')}
+            className={`deck-tab-btn ${currentLang === 'en' ? 'active' : ''}`}
+            onClick={() => handleLangChange('en')}
           >
-            🇬🇧 English (ENG)
+            gb English (ENG)
           </button>
         </div>
 
@@ -297,44 +297,44 @@ export function LandingPage() {
         <div className="deck-showcase-container">
           <div className="deck-preview-box">
             <img
-              src={deckFiles[activeDeckTab].imgUrl}
-              alt={deckFiles[activeDeckTab].title}
+              src={activeDeck.imgUrl}
+              alt={activeDeck.title}
               className="deck-slide-image"
             />
             <div className="deck-image-overlay">
-              <span>8 Slidely Presentation Deck</span>
+              <span>{dict.deckStats?.slideCountText || "8 Slaydli Taqdimot"}</span>
             </div>
           </div>
 
           <div className="deck-info-box">
             <div className="deck-badge-row">
               <span className="deck-lang-badge">
-                {deckFiles[activeDeckTab].flag} {deckFiles[activeDeckTab].langName}
+                {activeDeck.flag} {activeDeck.langName}
               </span>
               <span className="deck-format-badge">PPTX • 8 Slayd</span>
             </div>
 
-            <h3 className="deck-title">{deckFiles[activeDeckTab].title}</h3>
-            <p className="deck-desc">{deckFiles[activeDeckTab].description}</p>
+            <h3 className="deck-title">{activeDeck.title}</h3>
+            <p className="deck-desc">{activeDeck.description}</p>
 
             <div className="deck-highlights">
               <div className="highlight-item">
-                <strong style={{ color: '#21D8A0' }}>$50,000</strong>
-                <span>Pre-Seed Byudjet Taqsimoti</span>
+                <strong style={{ color: '#21D8A0' }}>{dict.deckStats?.budgetTitle || "$50,000"}</strong>
+                <span>{dict.deckStats?.budgetDesc || "Pre-Seed Byudjet Taqsimoti"}</span>
               </div>
               <div className="highlight-item">
-                <strong style={{ color: '#FFB800' }}>3 Yil</strong>
-                <span>$4M+ O'sish Bashorati</span>
+                <strong style={{ color: '#FFB800' }}>{dict.deckStats?.growthTitle || "3 Yil"}</strong>
+                <span>{dict.deckStats?.growthDesc || "$4M+ O'sish Bashorati"}</span>
               </div>
               <div className="highlight-item">
-                <strong style={{ color: '#00E5FF' }}>5 Rol</strong>
-                <span>Backend, Mobile, Game Dev, Design, Marketing</span>
+                <strong style={{ color: '#00E5FF' }}>{dict.deckStats?.rolesTitle || "5 Rol"}</strong>
+                <span>{dict.deckStats?.rolesDesc || "Backend, Mobile, Game Dev, Design, Marketing"}</span>
               </div>
             </div>
 
             <div className="deck-download-actions">
               <a
-                href={deckFiles[activeDeckTab].pptxUrl}
+                href={activeDeck.pptxUrl}
                 download
                 className="deck-download-btn-primary"
               >
@@ -343,16 +343,16 @@ export function LandingPage() {
               </a>
 
               <div className="deck-all-downloads">
-                <span className="download-label">Barcha tillarda yuklab olish:</span>
+                <span className="download-label">{dict.deckStats?.allDownloads || "Barcha tillarda yuklab olish:"}</span>
                 <div className="download-chips">
                   <a href="./presentations/dont_stop_pitch_deck_uz.pptx" download className="download-chip">
-                    🇺🇿 UZB
+                    uz UZB
                   </a>
                   <a href="./presentations/dont_stop_pitch_deck_ru.pptx" download className="download-chip">
-                    🇷🇺 RUS
+                    ru RUS
                   </a>
                   <a href="./presentations/dont_stop_pitch_deck_en.pptx" download className="download-chip">
-                    🇬🇧 ENG
+                    gb ENG
                   </a>
                 </div>
               </div>
