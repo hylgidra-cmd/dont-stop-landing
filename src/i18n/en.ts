@@ -70,7 +70,7 @@ export const en: TranslationDictionary = {
     rolesTitle: "5 Roles",
     rolesDesc: "Backend, Mobile, Game Dev, Design, Marketing",
     allDownloads: "Download in all languages:",
-    slideCountText: "8-Slide Presentation Deck",
+    slideCountText: "10-Slide Presentation Deck",
   },
   emblems: {
     eyebrow: "GUILD EMBLEMS",

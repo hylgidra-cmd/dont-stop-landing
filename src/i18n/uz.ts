@@ -68,7 +68,7 @@ export const uz: TranslationDictionary = {
     rolesTitle: "5 Rol",
     rolesDesc: "Backend, Mobile, Game Dev, Design, Marketing",
     allDownloads: "Barcha tillarda yuklab olish:",
-    slideCountText: "8 Slaydli Taqdimot",
+    slideCountText: "10 Slaydli Taqdimot",
   },
   emblems: {
     eyebrow: "GILDIYA GERBLARI",

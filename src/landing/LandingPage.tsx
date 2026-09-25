@@ -311,7 +311,7 @@ export function LandingPage() {
               <span className="deck-lang-badge">
                 {activeDeck.flag} {activeDeck.langName}
               </span>
-              <span className="deck-format-badge">PPTX • 8 Slayd</span>
+              <span className="deck-format-badge">PPTX • 10 Slayd</span>
             </div>
 
             <h3 className="deck-title">{activeDeck.title}</h3>
