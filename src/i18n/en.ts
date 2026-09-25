@@ -19,7 +19,7 @@ export const en: TranslationDictionary = {
     subtitle: "Run, walk, and conquer real city blocks together with your 10-player guild.",
     ctaStart: "Open Game Map",
     ctaQr: "Android APK",
-    investorDeck: "Investor Pitch Deck (PPTX)",
+    investorDeck: "Presentation (PPTX)",
   },
   stats: {
     claimedAreas: "Captured Areas",
@@ -40,7 +40,7 @@ export const en: TranslationDictionary = {
     f4Desc: "Battle Pass, avatar customization, local brand partnerships, and sponsored territory events.",
   },
   presentation: {
-    title: "INVESTOR PITCH DECK",
+    title: "Presentation (PPTX)",
     subtitle: "Explore the business model, 3-year growth roadmap, and $50,000 budget allocation",
     downloadBtn: "Download PPTX (ENG)",
     downloadEn: "Download PPTX (ENG)",

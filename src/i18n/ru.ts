@@ -19,7 +19,7 @@ export const ru: TranslationDictionary = {
     subtitle: "Бегай, ходи и захватывай реальные городские кварталы вместе со своей guild-командой.",
     ctaStart: "Перейти к карте",
     ctaQr: "Android APK",
-    investorDeck: "Презентация для инвесторов (PPTX)",
+    investorDeck: "Презентация (PPTX)",
   },
   stats: {
     claimedAreas: "Захвачено зон",
@@ -40,7 +40,7 @@ export const ru: TranslationDictionary = {
     f4Desc: "Battle Pass, кастомизация аватаров, партнёрство с локальными брендами и спонсорские зоны.",
   },
   presentation: {
-    title: "ПРЕЗЕНТАЦИЯ ДЛЯ ИНВЕСТОРОВ",
+    title: "Презентация (PPTX)",
     subtitle: "Ознакомьтесь с бизнес-моделью, прогнозом роста на 3 года и использованием инвестиций",
     downloadBtn: "Скачать PPTX (RUS)",
     downloadEn: "Скачать PPTX (ENG)",

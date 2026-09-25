@@ -17,7 +17,7 @@ export const uz: TranslationDictionary = {
     subtitle: "Real hayotdagi ko'chalarda yuguring, yuring va 10 kishilik Gildiyangiz bilan shahar kvartallarini bosib oling.",
     ctaStart: "Xaritaga O'tish",
     ctaQr: "Android APK",
-    investorDeck: "Investor Taqdimoti (PPTX)",
+    investorDeck: "Taqdimot (PPTX)",
   },
   stats: {
     claimedAreas: "Egallangan Hududlar",
@@ -38,7 +38,7 @@ export const uz: TranslationDictionary = {
     f4Desc: "Battle Pass, avatar кастомизация, lokal brend hamkorliklari va homiylik hududiy eventlari.",
   },
   presentation: {
-    title: "INVESTORLAR UCHUN TAQDIMOT",
+    title: "Taqdimot (PPTX)",
     subtitle: "Pre-Seed $50,000 investitsiya rejasi, 3 yillik moliyaviy prognozlar va texnik infratuzilma bilan tanishing",
     downloadBtn: "Taqdimotni Yuklab Olish (PPTX)",
     downloadEn: "PPTX Yuklab Olish (ENG)",
