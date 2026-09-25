@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   Download,
+  FileText,
   Globe,
   MapPin,
   Play,
@@ -28,12 +29,49 @@ interface LandingPageProps {
 }
 
 export function LandingPage({ onStartApp, onOpenLeaderboard }: LandingPageProps) {
-  const [currentLang, setCurrentLang] = useState(getLanguage());
+  const [currentLang, setCurrentLang] = useState<LanguageCode>(getLanguage());
   const [qrOpen, setQrOpen] = useState(false);
+  const [activeDeckTab, setActiveDeckTab] = useState<'uz' | 'ru' | 'en'>('uz');
 
   const handleLangChange = (code: LanguageCode) => {
     setLanguage(code);
     setCurrentLang(code);
+    if (code === 'uz' || code === 'ru' || code === 'en') {
+      setActiveDeckTab(code);
+    }
+  };
+
+  const deckFiles = {
+    uz: {
+      title: "O'zbekcha Taqdimot (UZB Deck)",
+      langName: "O'zbekcha",
+      flag: '🇺🇿',
+      pptxUrl: './presentations/dont_stop_pitch_deck_uz.pptx',
+      imgUrl: './presentations/pitch_deck_uz.png',
+      slidesCount: 8,
+      size: '5.9 MB',
+      description: "Pre-Seed $50,000 investitsiya rejasi, 3 yillik moliyaviy prognoz va texnik infratuzilma haqida to'liq ma'lumotlar.",
+    },
+    ru: {
+      title: 'Презентация на русском (RUS Deck)',
+      langName: 'Русский',
+      flag: '🇷🇺',
+      pptxUrl: './presentations/dont_stop_pitch_deck_ru.pptx',
+      imgUrl: './presentations/pitch_deck_ru.png',
+      slidesCount: 8,
+      size: '5.9 MB',
+      description: 'Полная информация об инвестиционном плане Pre-Seed $50 000, 3-летнем финансовом прогнозе и стеке технологий.',
+    },
+    en: {
+      title: 'English Pitch Deck (ENG Deck)',
+      langName: 'English',
+      flag: '🇬🇧',
+      pptxUrl: './presentations/dont_stop_pitch_deck_en.pptx',
+      imgUrl: './presentations/pitch_deck_en.png',
+      slidesCount: 8,
+      size: '5.9 MB',
+      description: 'Comprehensive investor overview covering the $50,000 Pre-Seed plan, 3-year growth forecast, and tech roadmap.',
+    },
   };
 
   return (
@@ -51,13 +89,14 @@ export function LandingPage({ onStartApp, onOpenLeaderboard }: LandingPageProps)
 
           <nav className="landing-menu">
             <a href="#features">Xususiyatlar</a>
+            <a href="#presentation">Prizintatsiya</a>
             <a href="#guilds">Gildiyalar</a>
             <a href="#how-it-works">Qanday ishlaydi</a>
             <a href="#download">APK / App</a>
           </nav>
 
           <div className="landing-nav-actions">
-            {/* Language Dropdown */}
+            {/* Header Language Selector */}
             <div className="lang-switcher landing-lang">
               <Globe size={14} className="lang-icon" style={{ color: '#21D8A0' }} />
               <select
@@ -105,9 +144,9 @@ export function LandingPage({ onStartApp, onOpenLeaderboard }: LandingPageProps)
               <Play size={18} fill="#10251F" /> <span>O'yinni Boshlash (Web App)</span>
             </button>
 
-            <button type="button" className="hero-apk-btn" onClick={() => setQrOpen(true)}>
-              <Download size={18} /> <span>Android APK & QR Scan</span>
-            </button>
+            <a href="#presentation" className="hero-presentation-btn">
+              <FileText size={18} /> <span>Investor Taqdimoti (PPTX)</span>
+            </a>
           </div>
 
           <div className="hero-stats-row">
@@ -130,8 +169,8 @@ export function LandingPage({ onStartApp, onOpenLeaderboard }: LandingPageProps)
             <div className="hero-stat-card">
               <Globe size={20} className="stat-icon cyan" />
               <div>
-                <strong>5 Languages</strong>
-                <span>QQ, UZ, KK, TR, EN</span>
+                <strong>3 Primary Languages</strong>
+                <span>UZB • RUS • ENG</span>
               </div>
             </div>
           </div>
@@ -218,8 +257,111 @@ export function LandingPage({ onStartApp, onOpenLeaderboard }: LandingPageProps)
         </div>
       </section>
 
+      {/* ── INVESTOR PRESENTATION DECK SECTION ─────────────────────── */}
+      <section id="presentation" className="landing-section dark-alt">
+        <div className="section-head">
+          <p className="eyebrow">INVESTOR PITCH DECK</p>
+          <h2>Investorlar uchun Taqdimot (PPTX)</h2>
+          <p className="section-lead">
+            Pre-Seed $50,000 investitsiya rejasi, 3 yillik moliyaviy prognozlar hamda 3 tilda (UZB, RUS, ENG) tayyorlangan slaydlar.
+          </p>
+        </div>
+
+        {/* Presentation Language Switcher Tabs */}
+        <div className="deck-lang-tabs">
+          <button
+            type="button"
+            className={`deck-tab-btn ${activeDeckTab === 'uz' ? 'active' : ''}`}
+            onClick={() => setActiveDeckTab('uz')}
+          >
+            🇺🇿 O'zbekcha (UZB)
+          </button>
+          <button
+            type="button"
+            className={`deck-tab-btn ${activeDeckTab === 'ru' ? 'active' : ''}`}
+            onClick={() => setActiveDeckTab('ru')}
+          >
+            🇷🇺 Русский (RUS)
+          </button>
+          <button
+            type="button"
+            className={`deck-tab-btn ${activeDeckTab === 'en' ? 'active' : ''}`}
+            onClick={() => setActiveDeckTab('en')}
+          >
+            🇬🇧 English (ENG)
+          </button>
+        </div>
+
+        {/* Selected Deck Showcase Card */}
+        <div className="deck-showcase-container">
+          <div className="deck-preview-box">
+            <img
+              src={deckFiles[activeDeckTab].imgUrl}
+              alt={deckFiles[activeDeckTab].title}
+              className="deck-slide-image"
+            />
+            <div className="deck-image-overlay">
+              <span>8 Slidely Presentation Deck</span>
+            </div>
+          </div>
+
+          <div className="deck-info-box">
+            <div className="deck-badge-row">
+              <span className="deck-lang-badge">
+                {deckFiles[activeDeckTab].flag} {deckFiles[activeDeckTab].langName}
+              </span>
+              <span className="deck-format-badge">PPTX • 8 Slayd</span>
+            </div>
+
+            <h3 className="deck-title">{deckFiles[activeDeckTab].title}</h3>
+            <p className="deck-desc">{deckFiles[activeDeckTab].description}</p>
+
+            <div className="deck-highlights">
+              <div className="highlight-item">
+                <strong style={{ color: '#21D8A0' }}>$50,000</strong>
+                <span>Pre-Seed Byudjet Taqsimoti</span>
+              </div>
+              <div className="highlight-item">
+                <strong style={{ color: '#FFB800' }}>3 Yil</strong>
+                <span>$4M+ O'sish Bashorati</span>
+              </div>
+              <div className="highlight-item">
+                <strong style={{ color: '#00E5FF' }}>5 Rol</strong>
+                <span>Backend, Mobile, Game Dev, Design, Marketing</span>
+              </div>
+            </div>
+
+            <div className="deck-download-actions">
+              <a
+                href={deckFiles[activeDeckTab].pptxUrl}
+                download
+                className="deck-download-btn-primary"
+              >
+                <Download size={18} />
+                <span>Taqdimotni Yuklab Olish (PPTX)</span>
+              </a>
+
+              <div className="deck-all-downloads">
+                <span className="download-label">Barcha tillarda yuklab olish:</span>
+                <div className="download-chips">
+                  <a href="./presentations/dont_stop_pitch_deck_uz.pptx" download className="download-chip">
+                    🇺🇿 UZB
+                  </a>
+                  <a href="./presentations/dont_stop_pitch_deck_ru.pptx" download className="download-chip">
+                    🇷🇺 RUS
+                  </a>
+                  <a href="./presentations/dont_stop_pitch_deck_en.pptx" download className="download-chip">
+                    🇬🇧 ENG
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Guild Emblems Showcase Section ──────────────────────────── */}
-      <section id="guilds" className="landing-section dark-alt">
+      <section id="guilds" className="landing-section">
         <div className="section-head">
           <p className="eyebrow">GILDIYA GERBLARI</p>
           <h2>Professional Vektor Gerblar To'plami</h2>
@@ -238,7 +380,7 @@ export function LandingPage({ onStartApp, onOpenLeaderboard }: LandingPageProps)
       </section>
 
       {/* ── How It Works (4 Steps) ─────────────────────────────────── */}
-      <section id="how-it-works" className="landing-section">
+      <section id="how-it-works" className="landing-section dark-alt">
         <div className="section-head">
           <p className="eyebrow">QANDAY ISHLAYDI</p>
           <h2>4 Oddiy Qadamda Hudud Egallang</h2>

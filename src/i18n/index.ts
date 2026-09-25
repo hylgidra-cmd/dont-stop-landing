@@ -1,12 +1,13 @@
 import { qq } from './qq';
 import { uz } from './uz';
+import { ru } from './ru';
 import { kk } from './kk';
 import { tr } from './tr';
 import { en } from './en';
 import { setActiveDict } from './state';
 import type { TranslationDictionary } from './qq';
 
-export type LanguageCode = 'qq' | 'uz' | 'kk' | 'tr' | 'en';
+export type LanguageCode = 'uz' | 'ru' | 'en' | 'tr' | 'kk' | 'qq';
 
 export interface LanguageOption {
   code: LanguageCode;
@@ -15,19 +16,21 @@ export interface LanguageOption {
 }
 
 export const SUPPORTED_LANGUAGES: LanguageOption[] = [
-  { code: 'qq', name: 'Qaraqalpaqsha', flag: '🚩' },
   { code: 'uz', name: "O'zbekcha", flag: '🇺🇿' },
-  { code: 'kk', name: 'Qazaqsha', flag: '🇰🇿' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
   { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+  { code: 'kk', name: 'Qazaqsha', flag: '🇰🇿' },
+  { code: 'qq', name: 'Qaraqalpaqsha', flag: '🚩' },
 ];
 
 const DICTIONARIES: Record<LanguageCode, TranslationDictionary> = {
-  qq,
   uz,
-  kk,
-  tr,
+  ru,
   en,
+  tr,
+  kk,
+  qq,
 };
 
 let currentLang: LanguageCode = (() => {
@@ -35,13 +38,10 @@ let currentLang: LanguageCode = (() => {
   if (saved && saved in DICTIONARIES) {
     return saved;
   }
-  return 'qq';
+  return 'uz';
 })();
 
-// Initialize initial active dictionary state
 setActiveDict(DICTIONARIES[currentLang]);
-
-const listeners = new Set<(lang: LanguageCode) => void>();
 
 export function getLanguage(): LanguageCode {
   return currentLang;
@@ -51,20 +51,6 @@ export function setLanguage(lang: LanguageCode) {
   if (lang in DICTIONARIES) {
     currentLang = lang;
     localStorage.setItem('dontstop.lang', lang);
-    setActiveDict(DICTIONARIES[currentLang]);
-    listeners.forEach((listener) => listener(lang));
+    setActiveDict(DICTIONARIES[lang]);
   }
 }
-
-export function subscribeLanguageChange(listener: (lang: LanguageCode) => void) {
-  listeners.add(listener);
-  return () => {
-    listeners.delete(listener);
-  };
-}
-
-export function getActiveDictionary(): TranslationDictionary {
-  return DICTIONARIES[currentLang] ?? qq;
-}
-
-export { t } from './qq';

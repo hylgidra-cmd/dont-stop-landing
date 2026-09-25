@@ -556,13 +556,246 @@
   color: #738780;
 }
 
+/* Hero Presentation Button */
+.hero-presentation-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: rgba(255, 184, 0, 0.15);
+  border: 1px solid rgba(255, 184, 0, 0.4);
+  border-radius: 999px;
+  color: #FFB800;
+  font-size: 0.92rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.hero-presentation-btn:hover {
+  background: rgba(255, 184, 0, 0.25);
+  border-color: #FFB800;
+  box-shadow: 0 0 16px rgba(255, 184, 0, 0.25);
+}
+
+/* Investor Pitch Deck Section Styles */
+.deck-lang-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.deck-tab-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: #A3B8B0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.deck-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFF;
+}
+
+.deck-tab-btn.active {
+  background: #21D8A0;
+  border-color: #21D8A0;
+  color: #10251F;
+  box-shadow: 0 4px 14px rgba(33, 216, 160, 0.35);
+}
+
+.deck-showcase-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 36px;
+  align-items: center;
+  background: rgba(18, 36, 30, 0.6);
+  border: 1px solid rgba(33, 216, 160, 0.25);
+  border-radius: 24px;
+  padding: 32px;
+  backdrop-filter: blur(12px);
+}
+
+.deck-preview-box {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.deck-slide-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.deck-preview-box:hover .deck-slide-image {
+  transform: scale(1.02);
+}
+
+.deck-image-overlay {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(11, 21, 18, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #21D8A0;
+}
+
+.deck-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.deck-badge-row {
+  display: flex;
+  gap: 10px;
+}
+
+.deck-lang-badge {
+  background: rgba(33, 216, 160, 0.15);
+  border: 1px solid rgba(33, 216, 160, 0.3);
+  color: #21D8A0;
+  font-size: 0.8rem;
+  font-weight: 750;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.deck-format-badge {
+  background: rgba(255, 184, 0, 0.15);
+  border: 1px solid rgba(255, 184, 0, 0.3);
+  color: #FFB800;
+  font-size: 0.8rem;
+  font-weight: 750;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.deck-title {
+  font-size: 1.6rem;
+  font-weight: 850;
+  color: #F7F9F6;
+  margin: 0;
+}
+
+.deck-desc {
+  font-size: 0.95rem;
+  color: #A3B8B0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.deck-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-item strong {
+  font-size: 1.1rem;
+  font-weight: 850;
+}
+
+.highlight-item span {
+  font-size: 0.72rem;
+  color: #738780;
+  margin-top: 2px;
+}
+
+.deck-download-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.deck-download-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: #21D8A0;
+  border-radius: 999px;
+  color: #10251F;
+  font-weight: 850;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(33, 216, 160, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.deck-download-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(33, 216, 160, 0.55);
+}
+
+.deck-all-downloads {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.download-label {
+  font-size: 0.8rem;
+  color: #738780;
+}
+
+.download-chips {
+  display: flex;
+  gap: 6px;
+}
+
+.download-chip {
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #F7F9F6;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.download-chip:hover {
+  background: rgba(33, 216, 160, 0.2);
+  border-color: #21D8A0;
+  color: #21D8A0;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 900px) {
   .landing-hero {
     grid-template-columns: 1fr;
     padding: 36px 18px;
   }
-  .features-grid, .steps-grid {
+  .features-grid, .steps-grid, .deck-showcase-container {
     grid-template-columns: 1fr;
   }
   .emblems-showcase-grid {
