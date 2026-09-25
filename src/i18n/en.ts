@@ -7,11 +7,17 @@ export const en: TranslationDictionary = {
     name: "Don't Stop",
     home: 'Home',
   },
+  nav: {
+    features: "Features",
+    presentation: "Presentation",
+    guilds: "Guilds",
+    howItWorks: "How It Works",
+  },
   hero: {
     tag: "GPS TERRITORIES • GUILD TOURNAMENTS",
     title: "THE CITY BECOMES YOUR GAME",
     subtitle: "Run, walk, and conquer real city blocks together with your 10-player guild.",
-    ctaStart: "Play Game (Web App)",
+    ctaStart: "Open Game Map",
     ctaQr: "Android APK",
     investorDeck: "Investor Pitch Deck (PPTX)",
   },
@@ -22,7 +28,7 @@ export const en: TranslationDictionary = {
     weeklyPrize: "Weekly Prize Pool",
   },
   features: {
-    title: "WHY DON'T STOP?",
+    title: "Why Don't Stop?",
     subtitle: "Merging physical fitness with deep tactical city conquest",
     f1Title: "Real-World Loop Capture",
     f1Desc: "Run or walk in a closed loop. The system automatically calculates your captured territory in m².",
@@ -36,7 +42,7 @@ export const en: TranslationDictionary = {
   presentation: {
     title: "INVESTOR PITCH DECK",
     subtitle: "Explore the business model, 3-year growth roadmap, and $50,000 budget allocation",
-    downloadBtn: "Download PPTX",
+    downloadBtn: "Download PPTX (ENG)",
     downloadEn: "Download PPTX (ENG)",
     downloadRu: "Download PPTX (RUS)",
     downloadUz: "Download PPTX (UZB)",
@@ -65,5 +71,13 @@ export const en: TranslationDictionary = {
     s3Desc: "Return to your starting point. The area is instantly captured in your guild colors.",
     s4Title: "4. Defend & Dominate",
     s4Desc: "Keep your team active to defend your ground against rival guilds!",
+  },
+  downloadBanner: {
+    title: "Try Don't Stop Right Now!",
+    subtitle: "Jump into the global map and start capturing city blocks.",
+    cta: "Open Game Map",
+  },
+  footer: {
+    rights: "© 2026 Don't Stop Territory Capture. All rights reserved.",
   },
 };

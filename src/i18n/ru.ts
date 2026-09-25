@@ -3,13 +3,23 @@ import { uz } from './uz';
 
 export const ru: TranslationDictionary = {
   ...uz,
+  brand: {
+    name: "Don't Stop",
+    home: "Главная",
+  },
+  nav: {
+    features: "Возможности",
+    presentation: "Презентация",
+    guilds: "Гильдии",
+    howItWorks: "Как это работает",
+  },
   hero: {
-    tag: "ТЕРРИТОРИИ GPS • GUILD-ТУРНИРЫ",
+    tag: "GPS ТЕРРИТОРИИ • GUILD-ТУРНИРЫ",
     title: "ГОРОД ИГРАЕТ С ТОБОЙ",
     subtitle: "Бегай, ходи и захватывай реальные городские кварталы вместе со своей guild-командой.",
-    ctaStart: "Открыть приложение",
-    ctaQr: "Скачать через QR-код",
-    investorDeck: "Investor Pitch Deck",
+    ctaStart: "Перейти к карте",
+    ctaQr: "Android APK",
+    investorDeck: "Презентация для инвесторов (PPTX)",
   },
   stats: {
     claimedAreas: "Захвачено зон",
@@ -18,11 +28,11 @@ export const ru: TranslationDictionary = {
     weeklyPrize: "Недельный призовой фонд",
   },
   features: {
-    title: "ПОЧЕМУ DON'T STOP?",
-    subtitle: "Превращаем движение в захватывающее городское соревнование",
+    title: "Почему Don't Stop?",
+    subtitle: "Сочетание фитнеса и захвата территорий в городском масштабе",
     f1Title: "GPS Захват территорий",
     f1Desc: "Замкните маршрут пешком или во время бега, чтобы занять квартал на интерактивной карте города.",
-    f2Title: "Guild-команды и Битвы",
+    f2Title: "Guild-команды и Векторные Эмблемы",
     f2Desc: "Объединяйтесь до 10 человек, защищайте границы территорий и поднимайтесь в лидерборде.",
     f3Title: "Античит и Приватность",
     f3Desc: "Защита от спуфинга локации и приватный радиус 200 метров для безопасности адресов игроков.",
@@ -32,7 +42,7 @@ export const ru: TranslationDictionary = {
   presentation: {
     title: "ПРЕЗЕНТАЦИЯ ДЛЯ ИНВЕСТОРОВ",
     subtitle: "Ознакомьтесь с бизнес-моделью, прогнозом роста на 3 года и использованием инвестиций",
-    downloadBtn: "Скачать PPTX",
+    downloadBtn: "Скачать PPTX (RUS)",
     downloadEn: "Скачать PPTX (ENG)",
     downloadRu: "Скачать PPTX (RUS)",
     downloadUz: "Скачать PPTX (UZB)",
@@ -62,9 +72,12 @@ export const ru: TranslationDictionary = {
     s4Title: "4. Защищайте & Побеждайте",
     s4Desc: "Поддерживайте активность команды, чтобы не уступить территорию соперникам.",
   },
-  qrModal: {
-    title: "Сканируйте для мобильного доступа",
-    subtitle: "Откройте камеру смартфона и перейдите по ссылке",
-    close: "Закрыть",
+  downloadBanner: {
+    title: "Попробуйте Don't Stop прямо сейчас!",
+    subtitle: "Перейдите на глобальную карту и начните захватывать городские кварталы.",
+    cta: "Перейти к карте",
+  },
+  footer: {
+    rights: "© 2026 Don't Stop Territory Capture. Все права защищены.",
   },
 };

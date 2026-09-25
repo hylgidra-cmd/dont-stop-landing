@@ -1,9 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import {
-  ChevronDown,
   Download,
   FileText,
-  Globe,
   MapPin,
   Play,
   Shield,
@@ -13,10 +11,8 @@ import {
   Trophy,
   User,
   Zap,
-  Check,
 } from 'lucide-react';
 import {
-  SUPPORTED_LANGUAGES,
   getLanguage,
   setLanguage,
   type LanguageCode,
@@ -24,18 +20,11 @@ import {
 import { getActiveDict } from '../i18n/state';
 import { GUILD_EMBLEMS_LIST, GuildEmblem } from '../profile/GuildEmblem';
 
-interface LandingPageProps {
-  onStartApp?: () => void;
-  onOpenLeaderboard?: () => void;
-}
-
 const REDIRECT_MAP_URL = 'https://qalarun-web.onrender.com';
 
-export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
+export function LandingPage() {
   const [currentLang, setCurrentLang] = useState<LanguageCode>(getLanguage());
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [activeDeckTab, setActiveDeckTab] = useState<'uz' | 'ru' | 'en'>(getLanguage());
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const dict: Record<string, any> = (getActiveDict() as any) || {};
 
@@ -43,19 +32,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
     setLanguage(code);
     setCurrentLang(code);
     setActiveDeckTab(code);
-    setLangDropdownOpen(false);
   };
-
-  // Close dropdown on click outside
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setLangDropdownOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const handleGoToMap = () => {
     window.open(REDIRECT_MAP_URL, '_blank');
@@ -94,8 +71,6 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
     },
   };
 
-  const currentLangObj = SUPPORTED_LANGUAGES.find((l) => l.code === currentLang) || SUPPORTED_LANGUAGES[0];
-
   return (
     <div className="landing-shell">
       {/* ── Landing Header ────────────────────────────────────────── */}
@@ -110,41 +85,36 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
           </div>
 
           <nav className="landing-menu">
-            <a href="#features">{dict.features?.title || "Xususiyatlar"}</a>
-            <a href="#presentation">{dict.presentation?.title || "Prizintatsiya"}</a>
-            <a href="#guilds">{dict.emblems?.title || "Gildiyalar"}</a>
-            <a href="#how-it-works">{dict.steps?.title || "Qanday ishlaydi"}</a>
+            <a href="#features">{dict.nav?.features || "Imkoniyatlar"}</a>
+            <a href="#presentation">{dict.nav?.presentation || "Taqdimot"}</a>
+            <a href="#guilds">{dict.nav?.guilds || "Gildiyalar"}</a>
+            <a href="#how-it-works">{dict.nav?.howItWorks || "Qanday ishlaydi"}</a>
           </nav>
 
           <div className="landing-nav-actions">
-            {/* Sleek Custom Language Dropdown */}
-            <div className="custom-lang-selector" ref={dropdownRef}>
+            {/* Sleek 3-Pill Language Selector */}
+            <div className="header-lang-pills">
               <button
                 type="button"
-                className="custom-lang-trigger"
-                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className={`lang-pill-btn ${currentLang === 'uz' ? 'active' : ''}`}
+                onClick={() => handleLangChange('uz')}
               >
-                <Globe size={15} style={{ color: '#21D8A0' }} />
-                <span>{currentLangObj.flag} {currentLangObj.name}</span>
-                <ChevronDown size={14} className={`chevron-icon ${langDropdownOpen ? 'open' : ''}`} />
+                🇺🇿 UZB
               </button>
-
-              {langDropdownOpen && (
-                <div className="custom-lang-menu">
-                  {SUPPORTED_LANGUAGES.map((l) => (
-                    <button
-                      key={l.code}
-                      type="button"
-                      className={`custom-lang-option ${l.code === currentLang ? 'active' : ''}`}
-                      onClick={() => handleLangChange(l.code as LanguageCode)}
-                    >
-                      <span className="option-flag">{l.flag}</span>
-                      <span className="option-name">{l.name}</span>
-                      {l.code === currentLang && <Check size={14} className="option-check" />}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <button
+                type="button"
+                className={`lang-pill-btn ${currentLang === 'ru' ? 'active' : ''}`}
+                onClick={() => handleLangChange('ru')}
+              >
+                🇷🇺 RUS
+              </button>
+              <button
+                type="button"
+                className={`lang-pill-btn ${currentLang === 'en' ? 'active' : ''}`}
+                onClick={() => handleLangChange('en')}
+              >
+                🇬🇧 ENG
+              </button>
             </div>
 
             <button type="button" className="landing-btn-primary" onClick={handleGoToMap}>
@@ -159,7 +129,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
         <div className="hero-content">
           <div className="hero-pill">
             <Sparkles size={14} style={{ color: '#FFB800' }} />
-            <span>{dict.hero?.tag || "REAL-WORLD GAMIFIED FITNESS PLATFORM"}</span>
+            <span>{dict.hero?.tag || "GPS HUDUDLAR • GILDIYA TURNIRLARI"}</span>
           </div>
 
           <h1 className="hero-title">
@@ -172,7 +142,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
 
           <div className="hero-cta-group">
             <button type="button" className="hero-main-btn" onClick={handleGoToMap}>
-              <Play size={18} fill="#10251F" /> <span>{dict.hero?.ctaStart || "Xaritaga O'tish (Web App)"}</span>
+              <Play size={18} fill="#10251F" /> <span>{dict.hero?.ctaStart || "Xaritaga O'tish"}</span>
             </button>
 
             <a href="#presentation" className="hero-presentation-btn">
@@ -198,10 +168,10 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
             </div>
 
             <div className="hero-stat-card">
-              <Globe size={20} className="stat-icon cyan" />
+              <Trophy size={20} className="stat-icon cyan" />
               <div>
-                <strong>3 Languages</strong>
-                <span>UZB • RUS • ENG</span>
+                <strong>$50,000 Pre-Seed</strong>
+                <span>3-Year Growth Roadmap</span>
               </div>
             </div>
           </div>
@@ -240,7 +210,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
       {/* ── Key Features Grid Section ──────────────────────────────── */}
       <section id="features" className="landing-section">
         <div className="section-head">
-          <p className="eyebrow">XUSUSIYATLAR</p>
+          <p className="eyebrow">{dict.nav?.features || "IMKONIYATLAR"}</p>
           <h2>{dict.features?.title || "Nega Don't Stop Eng Zo'r Hudud O'yini?"}</h2>
           <p className="section-lead">{dict.features?.subtitle || "Sport va mobil o'yinlarni birlashtirgan innovatsion imkoniyatlar."}</p>
         </div>
@@ -394,7 +364,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
       {/* ── Guild Emblems Showcase Section ──────────────────────────── */}
       <section id="guilds" className="landing-section">
         <div className="section-head">
-          <p className="eyebrow">GILDIYA GERBLARI</p>
+          <p className="eyebrow">{dict.nav?.guilds || "GILDIYA GERBLARI"}</p>
           <h2>{dict.emblems?.title || "Professional Vektor Gerblar To'plami"}</h2>
           <p className="section-lead">{dict.emblems?.subtitle || "Gildiyangiz shon-sharafini aks ettiruvchi 10 ta eksklyuziv gaming emblemalar."}</p>
         </div>
@@ -413,7 +383,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
       {/* ── How It Works (4 Steps) ─────────────────────────────────── */}
       <section id="how-it-works" className="landing-section dark-alt">
         <div className="section-head">
-          <p className="eyebrow">QANDAY ISHLAYDI</p>
+          <p className="eyebrow">{dict.nav?.howItWorks || "QANDAY ISHLAYDI"}</p>
           <h2>{dict.steps?.title || "4 Oddiy Qadamda Hudud Egallang"}</h2>
         </div>
 
@@ -439,25 +409,20 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
           <div className="step-card">
             <div className="step-num">04</div>
             <h3>{dict.steps?.s4Title || "4. Himoya Qiling & G'olib Bo'ling"}</h3>
-            <p>{dict.steps?.s4Desc || "Jamoangiz faolligini oshiring va hududlarni raqiblarga bering qo'ymang!"}</p>
+            <p>{dict.steps?.s4Desc || "Jamoangiz faolligini oshiring va hududlarni raqiblarga berib qo'ymang!"}</p>
           </div>
         </div>
       </section>
 
-      {/* ── Download & Testing Section ─────────────────────────────── */}
+      {/* ── Download Banner Section ─────────────────────────────── */}
       <section id="download" className="landing-download-banner">
         <div className="download-content">
-          <h2>Hoziroq Don't Stop'ni Sinab Ko'ring!</h2>
-          <p>Dunyoviy xaritaga o'tib yugurishni va shahar kvartallarini bosib olishni boshlang.</p>
+          <h2>{dict.downloadBanner?.title || "Hoziroq Don't Stop'ni Sinab Ko'ring!"}</h2>
+          <p>{dict.downloadBanner?.subtitle || "Dunyoviy xaritaga o'tib yugurishni va shahar kvartallarini bosib olishni boshlang."}</p>
           <div className="download-cta-row">
             <button type="button" className="hero-main-btn" onClick={handleGoToMap}>
-              <Play size={18} fill="#10251F" /> <span>{dict.hero?.ctaStart || "Xaritaga O'tish"}</span>
+              <Play size={18} fill="#10251F" /> <span>{dict.downloadBanner?.cta || "Xaritaga O'tish"}</span>
             </button>
-            {onOpenLeaderboard && (
-              <button type="button" className="landing-btn-secondary" onClick={onOpenLeaderboard}>
-                <Trophy size={18} /> <span>Reyting Jadvali</span>
-              </button>
-            )}
           </div>
         </div>
       </section>
@@ -469,7 +434,7 @@ export function LandingPage({ onOpenLeaderboard }: LandingPageProps) {
             <span className="brand-mark">DS</span>
             <strong>DON'T STOP</strong>
           </div>
-          <p>© 2026 Don't Stop Territory Capture. Barcha huquqlar himoyalangan.</p>
+          <p>{dict.footer?.rights || "© 2026 Don't Stop Territory Capture. Barcha huquqlar himoyalangan."}</p>
         </div>
       </footer>
     </div>

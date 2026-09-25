@@ -5,11 +5,17 @@ export const uz: TranslationDictionary = {
     name: "Don't Stop",
     home: "Bosh sahifa",
   },
+  nav: {
+    features: "Imkoniyatlar",
+    presentation: "Taqdimot",
+    guilds: "Gildiyalar",
+    howItWorks: "Qanday ishlaydi",
+  },
   hero: {
     tag: "GPS HUDUDLAR • GILDIYA TURNIRLARI",
     title: "SHAHAR SEN BILAN O'YNAYDI",
     subtitle: "Real hayotdagi ko'chalarda yuguring, yuring va 10 kishilik Gildiyangiz bilan shahar kvartallarini bosib oling.",
-    ctaStart: "Xaritaga O'tish (Web App)",
+    ctaStart: "Xaritaga O'tish",
     ctaQr: "Android APK",
     investorDeck: "Investor Taqdimoti (PPTX)",
   },
@@ -20,7 +26,7 @@ export const uz: TranslationDictionary = {
     weeklyPrize: "Haftalik Sovrin Jamg'armasi",
   },
   features: {
-    title: "NEGA DON'T STOP?",
+    title: "Nega Don't Stop Eng Zo'r Hudud O'yini?",
     subtitle: "Sport va mobil o'yinlarni birlashtirgan innovatsion imkoniyatlar",
     f1Title: "Real-World Loop Capture",
     f1Desc: "Ko'chada yuguring yoki yuring. Tizim avtomatik closed-loop konturini chizadi va bosib olingan yerlarni m² da hisoblaydi.",
@@ -54,7 +60,7 @@ export const uz: TranslationDictionary = {
   },
   steps: {
     title: "QANDAY ISHLAYDI?",
-    subtitle: " Birinchi egallangan kvartalgacha 4 ta oddiy qadam",
+    subtitle: "Birinchi egallangan kvartalgacha 4 ta oddiy qadam",
     s1Title: "1. Marshrutni Tanlang",
     s1Desc: "Xaritani oching va o'zingiz xohlagan zona atrofida yopiq kontur belgilang.",
     s2Title: "2. Harakatni Boshlang",
@@ -62,7 +68,15 @@ export const uz: TranslationDictionary = {
     s3Title: "3. Halqani Yoping",
     s3Desc: "Boshlagan nuqtangizga qayting. Hudud bir zumda Gildiyangiz rangiga bo'yaladi.",
     s4Title: "4. Himoya Qiling & G'olib Bo'ling",
-    s4Desc: "Jamoangiz faolligini oshiring va hududlarni raqiblarga bering qo'ymang!",
+    s4Desc: "Jamoangiz faolligini oshiring va hududlarni raqiblarga berib qo'ymang!",
+  },
+  downloadBanner: {
+    title: "Hoziroq Don't Stop'ni Sinab Ko'ring!",
+    subtitle: "Dunyoviy xaritaga o'tib yugurishni va shahar kvartallarini bosib olishni boshlang.",
+    cta: "Xaritaga O'tish",
+  },
+  footer: {
+    rights: "© 2026 Don't Stop Territory Capture. Barcha huquqlar himoyalangan.",
   },
 
   mode: { label: "Hudud rejimi", solo: "Yakka", clan: "Gildiya", clanNeeded: "Gildiya rejimi uchun avval gildiyaga kirish kerak." },
